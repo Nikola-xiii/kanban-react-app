@@ -21,12 +21,21 @@ export default class App extends React.Component {
     };
   }
 
+  addNote = () => {
+    this.setState({
+      notes: this.state.notes.concat([{
+        id: uuid.v4(),
+        task: 'New task'
+      }])
+    });
+  };
+
   render() {
     const {notes} = this.state;
 
     return (
       <div>
-        <button onClick={() => console.log('Added notes')}>+</button>
+        <button onClick={this.addNote}>+</button>
         <Notes notes={notes} />
       </div>
     )
