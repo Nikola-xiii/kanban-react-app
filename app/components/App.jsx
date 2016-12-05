@@ -1,6 +1,6 @@
 import React from 'react';
 import uuid from 'uuid';
-import Notes from './Notes'
+import Notes from './Notes';
 
 
 export default class App extends React.Component {
