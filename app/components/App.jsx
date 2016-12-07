@@ -51,6 +51,8 @@ export default class App extends React.Component {
           note.editing = false;
           note.task = task;
         }
+
+        return note;
       })
     });
   };
