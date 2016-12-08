@@ -8,7 +8,7 @@ const Editable = ({editing, value, onEdit}) => {
   return <Editable.Value value={value}/>
 };
 
-Editable.Value = ({value, ...props}) => <span {...props}>{value}</span>
+Editable.Value = ({value, ...props}) => <span className="value" {...props}>{value}</span>
 
 class Edit extends React.Component {
   render() {
@@ -16,6 +16,7 @@ class Edit extends React.Component {
 
     return <input
       type="text"
+      className="edit"
       autoFocus={true}
       defaultValue={value}
       onBlur={this.finishEdit}
