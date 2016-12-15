@@ -17,37 +17,18 @@ class App extends React.Component {
   };
 
   activeNoteEdit = (id) => {
-    this.setState({
-      notes: this.state.notes.map(note => {
-        if(note.id == id) {
-          note.editing = true;
-        }
-
-        return note;
-      })
-    });
+    this.props.NoteActions.update({id, editing: true})
   };
 
   editNote = (id, task) => {
-    this.setState({
-      notes: this.state.notes.map(note => {
-        if(note.id == id) {
-          note.editing = false;
-          note.task = task;
-        }
-
-        return note;
-      })
-    });
+    const {NoteActions} = this.props;
+    NoteActions.update({id, task, editing: false});
   };
 
   deleteNote = (id, e) => {
     // Avoid bubbling to edit
     e.stopPropagation();
-
-    this.setState({
-      notes: this.state.notes.filter(note => note.id !== id)
-    });
+    this.props.NoteActions.delete(id);
   };
 
   render() {
