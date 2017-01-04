@@ -25,6 +25,12 @@ export default connect(() => ({}), {
     });
   };
 
+  const deleteLane = e => {
+    e.stopPropagation();
+
+    LaneActions.delete(lane.id);
+  };
+
   const activateLaneEdit = () => {
     LaneActions.update({
       id: lane.id,
@@ -46,6 +52,9 @@ export default connect(() => ({}), {
       </div>
       <Editable className="lane-names" editing={lane.editing} value={lane.name} onEdit={editName}/>
       <div className="lane-name">{lane.name}</div>
+      <div className="lane-delete">
+        <button onClick={deleteLane}>x</button>
+      </div>
     </div>
   )
 })
