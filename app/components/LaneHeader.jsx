@@ -51,7 +51,6 @@ export default connect(() => ({}), {
         <button onClick={addNote}>+</button>
       </div>
       <Editable className="lane-names" editing={lane.editing} value={lane.name} onEdit={editName}/>
-      <div className="lane-name">{lane.name}</div>
       <div className="lane-delete">
         <button onClick={deleteLane}>x</button>
       </div>

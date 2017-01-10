@@ -43,6 +43,8 @@ export default class LaneStore {
         if(lane.id === laneId) {
           lane.notes = lane.notes.concat([noteId]);
         }
+
+        return lane;
       })
     });
   }
