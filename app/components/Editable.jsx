@@ -28,7 +28,7 @@ class Edit extends React.Component {
     if(e.key === 'Enter') {
       this.finishEdit(e);
     }
-  }
+  };
 
   finishEdit = (e) => {
     const value = e.target.value;

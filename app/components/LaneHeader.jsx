@@ -41,7 +41,8 @@ export default connect(() => ({}), {
   const editName = name => {
     LaneActions.update({
       id: lane.id,
-      name
+      name,
+      editing: false
     })
   };
 

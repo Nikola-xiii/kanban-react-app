@@ -23,7 +23,7 @@ const Lane = ({
       NoteActions.delete(noteId);
     };
 
-    const activiteNoteEdit = id => {
+    const activateNoteEdit = id => {
       NoteActions.update({id, editing: true});
     };
 
@@ -32,7 +32,7 @@ const Lane = ({
         <LaneHeader lane={lane}/>
         <Notes
           notes={selectNotesByIds(notes, lane.notes)}
-          onNoteClick={activiteNoteEdit}
+          onNoteClick={activateNoteEdit}
           onEdit={editNote}
           onDelete={deleteNote} />
       </div>
