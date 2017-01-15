@@ -6,7 +6,7 @@ import ItemTypes from '../constants/itemTypes';
 const Note = ({
   connectDragSource, connectDropTarget, children, ...props
 }) => {
-  return compose(connectDragSource)(
+  return compose(connectDragSource, connectDropTarget)(
     <div {...props}>
       {children}
     </div>
