@@ -36,4 +36,8 @@ export default class NoteStore {
       notes: this.notes.filter(note => note.id !== id)
     });
   }
+
+  move({sourceId, targetId}) {
+    console.log(`source: ${sourceId}, target: ${targetId}`);
+  }
 }
