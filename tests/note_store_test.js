@@ -37,4 +37,18 @@ describe('NoteStore', function () {
     assert.equal(state.notes.length, 1);
     assert.equal(state.notes[0].task, updateTask)
   });
+
+  it('deletes notes', function () {
+    const NoteStore = alt.stores.NoteStore;
+
+    NoteActions.create({id: 123, task: 'test'});
+
+    const note = NoteStore.getState.notes[0];
+
+    NoteActions.delete(note.id);
+
+    const state = NoteStore.getState();
+
+    assert.equal(state.notes.length, 0);
+  });
 });
