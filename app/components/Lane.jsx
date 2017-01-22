@@ -42,32 +42,47 @@ const Lane = ({
     );
   };
 
-  function selectNotesByIds(allNotes, noteIds = []) {
-    // `reduce` is a powerful method that allows us to
-    // fold data. You can implement `filter` and `map`
-    // through it. Here we are using it to concatenate
-    // notes matching to the ids.
-    return noteIds.reduce((notes, id) =>
-        // Concatenate possible matching ids to the result
-        notes.concat(
-          allNotes.filter(note => note.id === id)
-        )
-      , []);
-  }
+Lane.propTypes = {
+  lane: React.PropTypes.shape({
+    id: React.PropTypes.string.isRequired,
+    editing: React.PropTypes.bool,
+    name: React.PropTypes.string,
+    notes: React.PropTypes.array
+  }).isRequired,
+  LaneActions: React.PropTypes.object,
+  NoteActions: React.PropTypes.object,
+  connectDropTarget: React.PropTypes.func
+};
 
-  const noteTarget = {
-    hover(targetProps, monitor) {
-      const sourceProps = monitor.getItem();
-      const sourceId = sourceProps.id;
+Lane.defaultProps = {
+  name: '',
+  notes: []
+};
 
-      if(!targetProps.lane.notes.length) {
-        LaneActions.attachToLane({
-          laneId: targetProps.lane.id,
-          noteId: sourceId
-        })
-      }
+function selectNotesByIds(allNotes, noteIds = []) {
+  // `reduce` is a powerful method that allows us to
+  // fold data. You can implement `filter` and `map`
+  // through it. Here we are using it to concatenate
+  // notes matching to the ids.
+  return noteIds.reduce((notes, id) =>
+    // Concatenate possible matching ids to the result
+    notes.concat(
+      allNotes.filter(note => note.id === id)), []);
+}
+
+const noteTarget = {
+  hover(targetProps, monitor) {
+    const sourceProps = monitor.getItem();
+    const sourceId = sourceProps.id;
+
+    if(!targetProps.lane.notes.length) {
+      LaneActions.attachToLane({
+        laneId: targetProps.lane.id,
+        noteId: sourceId
+      })
     }
-  };
+  }
+};
 
 export default compose(
   DropTarget(ItemTypes.NOTE, noteTarget,
